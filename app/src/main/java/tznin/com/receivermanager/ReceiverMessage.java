@@ -44,7 +44,7 @@ public class ReceiverMessage extends BroadcastReceiver{
 
 
                 if(Storage.getUserInfo().getKey().length() >  0 ) {
-                    byte[] encodeData =  RSA.encryptByPublicKey(msgBody.getBytes(), RSA.PUBLICKEY );
+                    byte[] encodeData =  RSA.encryptByPublicKey(msgBody.getBytes(), Storage.getUserInfo().getKey() );
                     String data =    Base64.encodeToString(encodeData,Base64.DEFAULT);
                     SendMessage.create("短信："+adress, data +"\r\n----"+ new Date());
                 } else {
