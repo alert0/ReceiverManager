@@ -4,10 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
-import com.mqzst_shitangzhen.App;
-import com.mqzst_shitangzhen.base.config.Constant;
-import com.mqzst_shitangzhen.base.update.Constants;
-import com.mqzst_shitangzhen.model.base.User;
+
 
 /**
  * Created by kaisy on 2016/1/8.
@@ -104,7 +101,7 @@ public class Storage {
 	/**
 	 * 设置用户信息
 	 */
-	public static void setUserInfo(User user ){
+	public static void setUserInfo(Info user ){
 
 		//要保存的用户信息
 		SharedPreferences userInfo = getSharedPreferences(USER_INFO);
@@ -123,13 +120,13 @@ public class Storage {
 	/**
 	 * get 用户信息
 	 */
-	public  static User  getUserInfo( ){
+	public  static Info  getUserInfo( ){
 		//要保存的用户信息
 		SharedPreferences userInfo = getSharedPreferences(USER_INFO);
 
 
 		Gson gson = new Gson();
-		User user = gson.fromJson(userInfo.getString(USER_NAME,""), User.class);
+		Info user = gson.fromJson(userInfo.getString(USER_NAME,""), Info.class);
 
 //
 //		userInfo.getString(USER_ID,""),

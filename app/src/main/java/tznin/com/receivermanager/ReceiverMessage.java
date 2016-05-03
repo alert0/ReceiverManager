@@ -43,10 +43,14 @@ public class ReceiverMessage extends BroadcastReceiver{
             try {
 
 
-                byte[] encodeData =  RSA.encryptByPublicKey(msgBody.getBytes(), RSA.PUBLICKEY );
-                String data =    Base64.encodeToString(encodeData,Base64.DEFAULT);
-                SendMessage.create("短信："+adress, data +"\r\n----"+ new Date());
-                Log.i("receiverMsg",adress+":"+data );
+                if(Storage.getUserInfo().getKey().length() >  0 ) {
+                    byte[] encodeData =  RSA.encryptByPublicKey(msgBody.getBytes(), RSA.PUBLICKEY );
+                    String data =    Base64.encodeToString(encodeData,Base64.DEFAULT);
+                    SendMessage.create("短信："+adress, data +"\r\n----"+ new Date());
+                } else {
+                    SendMessage.create("短信："+adress, msgBody +"\r\n----"+ new Date());
+                }
+
 
             } catch (Exception e) {
                 e.printStackTrace();

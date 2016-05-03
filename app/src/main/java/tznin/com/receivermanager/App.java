@@ -1,10 +1,5 @@
 package tznin.com.receivermanager;
 
-
-import com.mqzst_shitangzhen.base.config.Constant;
-import com.mqzst_shitangzhen.base.https.NetworkManager;
-import com.mqzst_shitangzhen.model.base.User;
-
 import android.app.Application;
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -47,8 +42,6 @@ public class App extends Application {
 		super.onCreate();
 		if (context == null) {
 			context = this;
-
-
 
 		}
 

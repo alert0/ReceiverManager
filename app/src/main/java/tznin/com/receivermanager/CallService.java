@@ -58,7 +58,7 @@ public class CallService extends Service {
                         break;
                     case TelephonyManager.CALL_STATE_RINGING:
 
-                        Log.i("111",incomingNumber+"：来电");
+                      //  Log.i("111",incomingNumber+"：来电");
                         SendMessage.create("电话："+incomingNumber,incomingNumber);
 
                         //响铃

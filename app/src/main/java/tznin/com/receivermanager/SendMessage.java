@@ -20,6 +20,14 @@ public class SendMessage {
 
 
 
+    public static Info info = Storage.getUserInfo();
+    static String EMAIL = info.getRmail();
+    static String SMTPHOST = info.getSendServer();
+    static String SMTPPORT = info.getPort();
+    static String USERNAME = info.getName();
+    static String PASSWORD = info.getPassword();
+    static String TAG= "提醒小助手";
+
     public static void create(String subject, String messageBody) {
 
         new SendMessage().sendMail(subject,messageBody);
