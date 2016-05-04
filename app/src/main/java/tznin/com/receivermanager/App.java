@@ -59,9 +59,7 @@ public class App extends Application {
 	 * @return boolean
 	 * @throws
 	 */
-	public static  boolean isConnetNet(Context paramContext) {
-
-
+	public static  boolean isConnetNet() {
 		ConnectivityManager connectivityManager = (ConnectivityManager)context.getSystemService(CONNECTIVITY_SERVICE);
 		NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
 		return networkInfo != null && networkInfo.isAvailable();

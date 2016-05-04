@@ -3,6 +3,7 @@ package tznin.com.receivermanager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
@@ -18,6 +19,7 @@ public class CallReceiver extends BroadcastReceiver {
         Log.i("CallReceiver", "CallReceiver Start...");
 
         TelephonyManager   telephonyManager= (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+       // final  WifiManager mWifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         PhoneStateListener listener=new PhoneStateListener(){
             @Override
             public void onCallStateChanged(int state, String incomingNumber) {
@@ -35,6 +37,12 @@ public class CallReceiver extends BroadcastReceiver {
                     case TelephonyManager.CALL_STATE_RINGING:
 
                      //   Log.i("111",incomingNumber+"：来电");
+
+//                        if(!App.isConnetNet()) {
+//                            mWifiManager.setWifiEnabled(true);
+//
+//                        }
+
                         SendMessage.create("电话："+incomingNumber,incomingNumber+ "\r\n----"+ new Date() );
 
                         //响铃

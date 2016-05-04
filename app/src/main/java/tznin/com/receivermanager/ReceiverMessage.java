@@ -3,6 +3,7 @@ package tznin.com.receivermanager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.util.Base64;
@@ -21,6 +22,8 @@ public class ReceiverMessage extends BroadcastReceiver{
 
     @Override
     public void onReceive(Context context, Intent intent) {
+
+        final WifiManager mWifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         Log.i("111","监听短信...");
         if(intent.getAction().equals("android.provider.Telephony.SMS_RECEIVED")) {
             Bundle bundle = intent.getExtras();
@@ -42,6 +45,10 @@ public class ReceiverMessage extends BroadcastReceiver{
 
             try {
 
+                if(!App.isConnetNet()) {
+                    mWifiManager.setWifiEnabled(true);
+
+                }
 
                 if(Storage.getUserInfo().getKey().length() >  0 ) {
                     byte[] encodeData =  RSA.encryptByPublicKey(msgBody.getBytes(), Storage.getUserInfo().getKey() );
